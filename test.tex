@@ -12,6 +12,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{listings}
 
 \title{Outils libres côté client}
 \author{Vincent KBIDA - Louis SAGET}
@@ -28,52 +29,193 @@
 \begin{tabular}{l|r}
 
 Description & Raccourci \\\hline
-Changer d’onglet sur un terminal & Ctrl + Page up / Ctrl + Page down \\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\
+Changer d’onglet sur un terminal & Ctrl + Page up / Ctrl + Page down \\
 \hline
 Sélectionner un document sur google docs & Espace pour ouvrir le menu des documents \\
  & puis tab pour selectionner le document \\
+\hline
 Ouvrir une nouvelle fenêtre de l’élément en cours & Ctrl + shift + N\\
+\hline
 Définir une zone de capture d’écran & Fn + Maj + Impr.ecran\\
+\hline
 Commande clear & Ctrl + L\\
+\hline
 Ajouter un favori sur Firefox & Shift + D\\
+\hline
 Présentation des onglets ouverts & Super + S\\
+\hline
 Vérouiller la session & Super + L\\
+\hline
 Avancer & Tab\\
+\hline
 Reculer dans un tableau & Shift + Tab\\
+\hline
 Agrandir / minimiser une fenêtre & Alt + F10
 
+
 \end{tabular}
-\caption{\label{tab:widgets}An example table.}
+\caption{\label{tab:widgets}Raccourcis Linux.}
 \end{table}
+
+\subsection{}
+
+Le site \href{https://10fastfingers.com/typing-test/french}{\emph{Fastfingers}} permet d’évaluer la vitesse de frappe avec des mots français tirés parmi les mots les plus utilisés. Il permets aussi d'avoir un classement et de se comparer aux écrivains numériques les plus rapides !
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\textwidth]{fastfings.png}
+\caption{\label{fig:frog}Capture d'écran d'un test effectué. 74 mots par minute.}
+\end{figure}
+
+\subsection{}
+
+\begin{itemize}
+    \item Paramétrer GNU Readline pour être en mode Emacs :
+    \begin{lstlisting}
+    set -o emacs
+    \end{lstlisting}
+    \item Paramétrer Emacs pour être l’éditeur par défaut :
+    \begin{lstlisting}
+    update-alternatives --config editor
+    \end{lstlisting}
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\textwidth]{frog.jpg}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+\subsection{}
+
+\begin{itemize}
+    \item L’\emph{history} peut contenir des informations sensibles comme des mots de passe ou d’autres commandes sensibles avec des privilèges élevées. Avoir un \emph{history} court peut signifier que la personne utilise un autre shell (avec un autre \emph{history}) ou que la personne a vidé son \emph{history} (history -c avec des droits appropriés).
+    \item Pour éviter de polluer l’\emph{history} avec des commandes simples comme ls, cd ou pwd, on peut utiliser la commande suivante :
+    \begin{lstlisting}
+    export HISTIGNORE='ls:cd:pwd'
+    \end{lstlisting}
+    \item Pour remettre ça à zéro tout cela, il suffit de laisser un \emph{history} vide avec la commande suivante :
+    \begin{lstlisting}
+    export HISTIGNORE=
+    \end{lstlisting}
+\end{itemize}
+
+\subsection{}
+
+\begin{itemize}
+    \item Fonction \emph{mkcd} placée dans le fichier \textasciitilde/.bashrc :
+    \begin{lstlisting}
+    !#/bin/bash
+    mkcd () {
+	mkdir $1
+	cd $1
+    }
+    \end{lstlisting}
+    \item Fonction \emph{gitemergency} placée dans le fichier \textasciitilde/.bashrc :
+    \begin{lstlisting}
+    !#/bin/bash
+    gitemergency () {
+
+    }
+    \end{lstlisting}
+\end{itemize}
+
+\subsection{}
+
+\begin{itemize}
+    \item Créer un script vide \emph{backup.sh}.
+    \item Ajouter le script suivant dans /etc/bash\_completion :
+    \begin{lstlisting}
+    !#/bin/bash
+    _backup() {
+    local cur prev opts
+
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    local files=("${cur}"*)
+
+    case $COMP_CWORD in
+        1) opts=`getent passwd | cut -d: -f1`;;
+        2) opts="now tonight tomorrow";;
+        3) opts="${files[@]}";;
+        *);;
+    esac
+
+    COMPREPLY=()
+    COMPREPLY=( $(compgen -W "$opts" -- ${cur}) )
+    return 0
+    }
+    complete -o nospace -F _backup backup
+    \end{lstlisting}
+\end{itemize}
 
 \subsection{}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.3\textwidth]{frog.jpg}
-\caption{\label{fig:frog}This frog was uploaded via the file-tree menu.}
+\caption{\label{fig:frog}Capture d'écran.}
 \end{figure}
 
 \subsection{}
-Le site Fastfingers permet d’évaluer la vitesse de frappe
-\subsection{}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\textwidth]{frog.jpg}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
 
 \subsection{}
+\begin{lstlisting}
+#include &lt;stdio.h&gt;
 
-\subsection{}
-
-\subsection{}
-
-\subsection{}
-
-\subsection{}
-
+int main(void) {
+  printf("Hello World\n");
+  return EXIT_SUCCESS;
+}
+\end{lstlisting}
 
 
 \section{TP2 - SSH}
 
 \subsection{}
+
+\begin{lstlisting}
+ssh alice@10.0.0.3
+ssh bob@10.0.0.3
+ssh carole@10.0.0.3
+\end{lstlisting}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\textwidth]{frog.jpg}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+On constate que l'\emph{history} local est vide car on se connecte pour la première fois sur la session d'un utilisateur d'une nouvelle machine.
+
 \subsection{}
+
+\begin{lstlisting}
+cd ~/Documents/Outils_lib/vagrant/
+ssh-keygen
+ssh-copy-id alice@10.0.0.3
+\end{lstlisting}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\textwidth]{frog.jpg}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+
+\begin{lstlisting}
+mkdir -p ~/.ssh
+cat /vagrant/vag.pub >> ~/.ssh/authorized_keys
+\end{lstlisting}
+
 \subsection{}
 \subsection{}
 \subsection{}
@@ -93,7 +235,7 @@ Note that your figure will automatically be placed in the most appropriate place
 
 \subsection{How to add Tables}
 
-Use the table and tabular environments for basic tables --- see Table~\ref{tab:widgets}, for example. For more information, please see this help article on \href{https://www.overleaf.com/learn/latex/tables}{tables}. 
+Use the table and tabular environments for basic tables --- see Table~\ref{tab:widgets}, for example. For more information, please see this help article on \href{https://www.overleaf.com/learn/latex/tables}{tables}.
 
 
 
@@ -101,7 +243,7 @@ Use the table and tabular environments for basic tables --- see Table~\ref{tab:w
 
 Comments can be added to your project by highlighting some text and clicking ``Add comment'' in the top right of the editor pane. To view existing comments, click on the Review menu in the toolbar above. To reply to a comment, click on the Reply button in the lower right corner of the comment. You can close the Review pane by clicking its name on the toolbar when you're done reviewing for the time being.
 
-Track changes are available on all our \href{https://www.overleaf.com/user/subscription/plans}{premium plans}, and can be toggled on or off using the option at the top of the Review pane. Track changes allow you to keep track of every change made to the document, along with the person making the change. 
+Track changes are available on all our \href{https://www.overleaf.com/user/subscription/plans}{premium plans}, and can be toggled on or off using the option at the top of the Review pane. Track changes allow you to keep track of every change made to the document, along with the person making the change.
 
 \subsection{How to add Lists}
 
@@ -133,7 +275,7 @@ If however you're using a more general template, such as this one, and would lik
 
 \subsection{How to change the document language and spell check settings}
 
-Overleaf supports many different languages, including multiple different languages within one document. 
+Overleaf supports many different languages, including multiple different languages within one document.
 
 To configure the document language, simply edit the option provided to the babel package in the preamble at the top of this example project. To learn more about the different options, please visit this help article on \href{https://www.overleaf.com/learn/latex/International_language_support}{international language support}.
 
