@@ -13,6 +13,7 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{listings}
+\usepackage[section]{placeins}
 
 \title{Outils libres côté client}
 \author{Vincent KBIDA - Louis SAGET}
@@ -32,16 +33,27 @@ Description & Raccourci \\\hline
 Changer d’onglet sur un terminal & Ctrl + Page up / Ctrl + Page down \\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\
 \hline
 Sélectionner un document sur google docs & Espace pour ouvrir le menu des documents \\
+\hline
  & puis tab pour selectionner le document \\
+ \hline
 Ouvrir une nouvelle fenêtre de l’élément en cours & Ctrl + shift + N\\
+\hline
 Définir une zone de capture d’écran & Fn + Maj + Impr.ecran\\
+\hline
 Commande clear & Ctrl + L\\
+\hline
 Ajouter un favori sur Firefox & Shift + D\\
+\hline
 Présentation des onglets ouverts & Super + S\\
+\hline
 Vérouiller la session & Super + L\\
+\hline
 Avancer & Tab\\
+\hline
 Reculer dans un tableau & Shift + Tab\\
+\hline
 Agrandir / minimiser une fenêtre & Alt + F10
+\hline
 
 \end{tabular}
 \caption{\label{tab:widgets}Raccourcis Linux.}
@@ -53,7 +65,7 @@ Le site \href{https://10fastfingers.com/typing-test/french}{\emph{Fastfingers}} 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.3\textwidth]{frog.jpg}
+\includegraphics[maxwidth=0.8\textwidth]{images/q1-2.jpg}
 \caption{\label{fig:frog}Capture d'écran.}
 \end{figure}
 
@@ -72,7 +84,7 @@ Le site \href{https://10fastfingers.com/typing-test/french}{\emph{Fastfingers}} 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.3\textwidth]{frog.jpg}
+\includegraphics[width=0.3\textwidth]{images/q1-3.jpg}
 \caption{\label{fig:frog}Capture d'écran.}
 \end{figure}
 
@@ -105,7 +117,9 @@ Le site \href{https://10fastfingers.com/typing-test/french}{\emph{Fastfingers}} 
     \begin{lstlisting}
     !#/bin/bash
     gitemergency () {
-
+	git add .
+	git commit -m "commit d'urgence" $1
+	git push
     }
     \end{lstlisting}
 \end{itemize}
@@ -142,30 +156,58 @@ Le site \href{https://10fastfingers.com/typing-test/french}{\emph{Fastfingers}} 
 
 \subsection{}
 
+Après l’installation de \emph{zsh}, on peut voir dans le fichier .oh\_my\_zsh/themes/[theme\_actuel] de plugin vagrant-prompt son fonctionnement :
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.3\textwidth]{frog.jpg}
+\includegraphics[\textwidth]{q1-7-1.jpg}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+Il suffit ensuite d’ajouter les variables en commentaires au theme actuel dans le fichier
+.oh\_my\_zsh/themes/[theme\_actuel] :
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q1-7-2.jpg}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+On rajoute le plugin dans le .zshrc et on redémarre zsh :
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q1-7-3.jpg}
 \caption{\label{fig:frog}Capture d'écran.}
 \end{figure}
 
 \subsection{}
 
+Script ajouté dans le fichier .zshrc :
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.3\textwidth]{frog.jpg}
+\includegraphics[\textwidth]{images/q1-8.jpg}
 \caption{\label{fig:frog}Capture d'écran.}
 \end{figure}
 
 \subsection{}
-\begin{lstlisting}
-#include &lt;stdio.h&gt;
 
-int main(void) {
-  printf("Hello World\n");
-  return EXIT_SUCCESS;
-}
-\end{lstlisting}
-
+\begin{itemize}
+    \item Guake :
+Peut s’activer et se désactiver avec une touche (F12) -
+Transparent -
+Coloré.
+\item Konsole :
+Petit et compact -
+Permet de configurer des profils -
+Gestion d'onglets.
+\item Termit :
+Compact -
+Gestion des onglets -
+Fonction de copier-coller -
+Gestion de différentes sessions.
+\end{itemize}
 
 \section{TP2 - SSH}
 
@@ -179,9 +221,11 @@ ssh carole@10.0.0.3
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.3\textwidth]{frog.jpg}
+\includegraphics[\textwidth]{images/q2-1.jpg}
 \caption{\label{fig:frog}Capture d'écran.}
 \end{figure}
+
+\FloatBarrier
 
 On constate que l'\emph{history} local est vide car on se connecte pour la première fois sur la session d'un utilisateur d'une nouvelle machine.
 
@@ -195,7 +239,7 @@ ssh-copy-id alice@10.0.0.3
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.3\textwidth]{frog.jpg}
+\includegraphics[\textwidth]{images/q2-2.jpg}
 \caption{\label{fig:frog}Capture d'écran.}
 \end{figure}
 
@@ -204,6 +248,57 @@ ssh-copy-id alice@10.0.0.3
 mkdir -p ~/.ssh
 cat /vagrant/vag.pub >> ~/.ssh/authorized_keys
 \end{lstlisting}
+
+\subsection{}
+
+\begin{itemize}
+\item Purger le fichier \textasciitilde/.ssh/known\_hosts :
+\begin{lstlisting}
+echo "" > ~/.ssh/known_hosts
+\end{lstlisting}
+\item Ajouter les clés manuellement :
+\begin{lstlisting}
+cat /vagrant/vag.pub >> ~/.ssh/authorized_keys
+\end{lstlisting}
+\item Modifier le fichier de configuration SSH :
+\begin{lstlisting}
+sudo vi ~/.ssh/config
+\end{lstlisting}
+\item Ajouter :
+
+\begin{lstlisting}
+Host bc
+	Hostname 10.0.0.3
+	User bob
+\end{lstlisting}
+    \item Connexion via SFTP :
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q2-3-1.jpg}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+\begin{itemize}
+    \item Connexion via SSHFS :
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q2-3-2.jpg}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+\begin{itemize}
+    \item Vérification :
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q2-3-3.jpg}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
 
 \subsection{}
 
@@ -294,82 +389,97 @@ ssh srv
 \end{lstlisting}
 \end{itemize}
 
-\subsection{}
-\subsection{}
-
-Simply use the section and subsection commands, as in this example document! With Overleaf, all the formatting and numbering is handled automatically according to the template you've chosen. If you're using Rich Text mode, you can also create new section and subsections via the buttons in the editor toolbar.
-
-\subsection{How to include Figures}
-
-First you have to upload the image file from your computer using the upload link in the file-tree menu. Then use the includegraphics command to include it in your document. Use the figure environment and the caption command to add a number and a caption to your figure. See the code for Figure \ref{fig:frog} in this section for an example.
-
-Note that your figure will automatically be placed in the most appropriate place for it, given the surrounding text and taking into account other figures or tables that may be close by. You can find out more about adding images to your documents in this help article on \href{https://www.overleaf.com/learn/how-to/Including_images_on_Overleaf}{including images on Overleaf}.
-
-
-
-\subsection{How to add Tables}
-
-Use the table and tabular environments for basic tables --- see Table~\ref{tab:widgets}, for example. For more information, please see this help article on \href{https://www.overleaf.com/learn/latex/tables}{tables}.
-
-
-
-\subsection{How to add Comments and Track Changes}
-
-Comments can be added to your project by highlighting some text and clicking ``Add comment'' in the top right of the editor pane. To view existing comments, click on the Review menu in the toolbar above. To reply to a comment, click on the Reply button in the lower right corner of the comment. You can close the Review pane by clicking its name on the toolbar when you're done reviewing for the time being.
-
-Track changes are available on all our \href{https://www.overleaf.com/user/subscription/plans}{premium plans}, and can be toggled on or off using the option at the top of the Review pane. Track changes allow you to keep track of every change made to the document, along with the person making the change.
-
-\subsection{How to add Lists}
-
-You can make lists with automatic numbering \dots
-
-\begin{enumerate}
-\item Like this,
-\item and like this.
-\end{enumerate}
-\dots or bullet points \dots
-\begin{itemize}
-\item Like this,
-\item and like this.
-\end{itemize}
-
-\subsection{How to write Mathematics}
-
-\LaTeX{} is great at typesetting mathematics. Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically distributed random variables with $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] = \sigma^2 < \infty$, and let
-\[S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
-      = \frac{1}{n}\sum_{i}^{n} X_i\]
-denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge in distribution to a normal $\mathcal{N}(0, \sigma^2)$.
-
-
-\subsection{How to change the margins and paper size}
-
-Usually the template you're using will have the page margins and paper size set correctly for that use-case. For example, if you're using a journal article template provided by the journal publisher, that template will be formatted according to their requirements. In these cases, it's best not to alter the margins directly.
-
-If however you're using a more general template, such as this one, and would like to alter the margins, a common way to do so is via the geometry package. You can find the geometry package loaded in the preamble at the top of this example file, and if you'd like to learn more about how to adjust the settings, please visit this help article on \href{https://www.overleaf.com/learn/latex/page_size_and_margins}{page size and margins}.
-
-\subsection{How to change the document language and spell check settings}
-
-Overleaf supports many different languages, including multiple different languages within one document.
-
-To configure the document language, simply edit the option provided to the babel package in the preamble at the top of this example project. To learn more about the different options, please visit this help article on \href{https://www.overleaf.com/learn/latex/International_language_support}{international language support}.
-
-To change the spell check language, simply open the Overleaf menu at the top left of the editor window, scroll down to the spell check setting, and adjust accordingly.
-
-\subsection{How to add Citations and a References List}
-
-You can simply upload a \verb|.bib| file containing your BibTeX entries, created with a tool such as JabRef. You can then cite entries from it, like this: \cite{greenwade93}. Just remember to specify a bibliography style, as well as the filename of the \verb|.bib|. You can find a \href{https://www.overleaf.com/help/97-how-to-include-a-bibliography-using-bibtex}{video tutorial here} to learn more about BibTeX.
-
-If you have an \href{https://www.overleaf.com/user/subscription/plans}{upgraded account}, you can also import your Mendeley or Zotero library directly as a \verb|.bib| file, via the upload menu in the file-tree.
-
-\subsection{Good luck!}
-
-We hope you find Overleaf useful, and do take a look at our \href{https://www.overleaf.com/learn}{help library} for more tutorials and user guides! Please also let us know if you have any feedback using the Contact Us link at the bottom of the Overleaf menu --- or use the contact form at \url{https://www.overleaf.com/contact}.
-
 \section{TP3 - Git}
 
 \subsection{}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q3-1-1.png}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q3-1-2.png}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q3-1-3.png}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
 \subsection{}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q3-2-1.png}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q3-2-2.png}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q3-2-3.png}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q3-2-4.png}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q3-2-5.png}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q3-2-6.png}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q3-2-7.png}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
 \subsection{}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q3-3-1.png}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q3-3-2.png}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q3-3-3.png}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[\textwidth]{images/q3-3-4.png}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
 
 \bibliographystyle{alpha}
 \bibliography{sample}
