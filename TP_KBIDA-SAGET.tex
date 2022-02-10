@@ -21,6 +21,8 @@
 
 \begin{document}
 \maketitle
+\tableofcontents
+\newpage
 
 \section{TP1 - Efficacité de l'environnement}
 
@@ -31,11 +33,10 @@
 \begin{tabular}{l|r}
 
 Description & Raccourci \\\hline
-Changer d’onglet sur un terminal & Ctrl + Page up / Ctrl + Page down \\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\
+Changer d’onglet sur un terminal & Ctrl + Page up / Ctrl + Page down\\
 \hline
-Sélectionner un document sur google docs & Espace pour ouvrir le menu des documents \\
-\hline
- & puis tab pour selectionner le document \\
+Sélectionner un document sur google docs & Espace pour ouvrir le menu des documents\\
+ & puis tab pour selectionner le document\\
  \hline
 Ouvrir une nouvelle fenêtre de l’élément en cours & Ctrl + shift + N\\
 \hline
@@ -46,6 +47,12 @@ Commande clear & Ctrl + L\\
 Ajouter un favori sur Firefox & Shift + D\\
 \hline
 Présentation des onglets ouverts & Super + S\\
+\hline
+Split vertical tmux & Ctrl+ B puis MAJ + \%\\
+\hline
+Split horizontale tmux & Ctrl + B puis "\\
+\hline
+Changement de fenêtre tmux & Ctrl B + Flèches directionnelles\\
 \hline
 Vérouiller la session & Super + L\\
 \hline
@@ -210,6 +217,7 @@ Fonction de copier-coller -
 Gestion de différentes sessions.
 \end{itemize}
 
+\newpage
 \section{TP2 - SSH}
 
 \subsection{}
@@ -282,7 +290,7 @@ Host bc
 \end{figure}
 
 \begin{itemize}
-    \item Connexion via SSHFS :
+    \item Connexion via SSHFS et vérification :
 \end{itemize}
 
 \begin{figure}[h]
@@ -291,16 +299,8 @@ Host bc
 \caption{\label{fig:frog}Capture d'écran.}
 \end{figure}
 
-\begin{itemize}
-    \item Vérification :
-\end{itemize}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{images/q2-3-3.jpg}
-\caption{\label{fig:frog}Capture d'écran.}
-\end{figure}
 \FloatBarrier
+
 \subsection{}
 
 \begin{itemize}
@@ -390,6 +390,7 @@ ssh srv
 \end{lstlisting}
 \end{itemize}
 
+\newpage
 \section{TP3 - Git}
 
 \subsection{}
