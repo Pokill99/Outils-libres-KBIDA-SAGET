@@ -32,16 +32,27 @@ Description & Raccourci \\\hline
 Changer d’onglet sur un terminal & Ctrl + Page up / Ctrl + Page down \\aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\
 \hline
 Sélectionner un document sur google docs & Espace pour ouvrir le menu des documents \\
+\hline
  & puis tab pour selectionner le document \\
+ \hline
 Ouvrir une nouvelle fenêtre de l’élément en cours & Ctrl + shift + N\\
+\hline
 Définir une zone de capture d’écran & Fn + Maj + Impr.ecran\\
+\hline
 Commande clear & Ctrl + L\\
+\hline
 Ajouter un favori sur Firefox & Shift + D\\
+\hline
 Présentation des onglets ouverts & Super + S\\
+\hline
 Vérouiller la session & Super + L\\
+\hline
 Avancer & Tab\\
+\hline
 Reculer dans un tableau & Shift + Tab\\
+\hline
 Agrandir / minimiser une fenêtre & Alt + F10
+\hline
 
 \end{tabular}
 \caption{\label{tab:widgets}Raccourcis Linux.}
@@ -53,7 +64,7 @@ Le site \href{https://10fastfingers.com/typing-test/french}{\emph{Fastfingers}} 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.3\textwidth]{frog.jpg}
+\includegraphics[width=0.3\textwidth]{q1-2.jpg}
 \caption{\label{fig:frog}Capture d'écran.}
 \end{figure}
 
@@ -72,7 +83,7 @@ Le site \href{https://10fastfingers.com/typing-test/french}{\emph{Fastfingers}} 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.3\textwidth]{frog.jpg}
+\includegraphics[width=0.3\textwidth]{q1-3.jpg}
 \caption{\label{fig:frog}Capture d'écran.}
 \end{figure}
 
@@ -105,7 +116,9 @@ Le site \href{https://10fastfingers.com/typing-test/french}{\emph{Fastfingers}} 
     \begin{lstlisting}
     !#/bin/bash
     gitemergency () {
-
+	git add .
+	git commit -m "commit d'urgence" $1
+	git push
     }
     \end{lstlisting}
 \end{itemize}
@@ -142,30 +155,58 @@ Le site \href{https://10fastfingers.com/typing-test/french}{\emph{Fastfingers}} 
 
 \subsection{}
 
+Après l’installation de \emph{zsh}, on peut voir dans le fichier .oh\_my\_zsh/themes/[theme\_actuel] de plugin vagrant-prompt son fonctionnement :
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.3\textwidth]{frog.jpg}
+\includegraphics[width=0.3\textwidth]{q1-7-1.jpg}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+Il suffit ensuite d’ajouter les variables en commentaires au theme actuel dans le fichier
+.oh\_my\_zsh/themes/[theme\_actuel] :
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\textwidth]{q1-7-2.jpg}
+\caption{\label{fig:frog}Capture d'écran.}
+\end{figure}
+
+On rajoute le plugin dans le .zshrc et on redémarre zsh :
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.3\textwidth]{q1-7-3.jpg}
 \caption{\label{fig:frog}Capture d'écran.}
 \end{figure}
 
 \subsection{}
 
+Script ajouté dans le fichier .zshrc :
+
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.3\textwidth]{frog.jpg}
+\includegraphics[width=0.3\textwidth]{q1-8.jpg}
 \caption{\label{fig:frog}Capture d'écran.}
 \end{figure}
 
 \subsection{}
-\begin{lstlisting}
-#include &lt;stdio.h&gt;
 
-int main(void) {
-  printf("Hello World\n");
-  return EXIT_SUCCESS;
-}
-\end{lstlisting}
-
+\begin{itemize}
+    \item Guake :
+Peut s’activer et se désactiver avec une touche (F12) -
+Transparent -
+Coloré.
+\item Konsole :
+Petit et compact -
+Permet de configurer des profils -
+Gestion d'onglets.
+\item Termit :
+Compact -
+Gestion des onglets -
+Fonction de copier-coller -
+Gestion de différentes sessions.
+\end{itemize}
 
 \section{TP2 - SSH}
 
